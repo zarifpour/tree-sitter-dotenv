@@ -19,9 +19,9 @@ module.exports = grammar({
 
     value: ($) =>
       choice(
-        $.bool,
         $.string_interpolated,
         $.string_literal,
+        $.bool,
         $.integer,
         $.raw_value,
       ),
@@ -30,12 +30,16 @@ module.exports = grammar({
 
     integer: ($) => /\d+/,
 
-    string_interpolated: ($) => seq('"', repeat($._interpolated_content), '"'),
+    string_interpolated: ($) =>
+      seq('"', repeat(choice($._interpolated_content, $.escape_sequence)), '"'),
 
-    _interpolated_content: ($) => choice(/[^"]/, $.interpolated_variable),
+    _interpolated_content: ($) => choice(/[^"$\\]+/, $.interpolated_variable),
 
-    string_literal: ($) => seq("'", repeat(/[^']/), "'"),
+    string_literal: ($) =>
+      seq("'", repeat(choice(/[^'\\]+/, $.escape_sequence)), "'"),
 
-    raw_value: ($) => /[^#=\n]+/,
+    escape_sequence: ($) => token(seq("\\", /[nrtfb"'\$\\]/)),
+
+    raw_value: ($) => token(prec(-1, /[^#=\n]+/)),
   },
 });

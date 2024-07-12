@@ -47,6 +47,10 @@
       "required": false,
       "types": [
         {
+          "type": "escape_sequence",
+          "named": true
+        },
+        {
           "type": "interpolated_variable",
           "named": true
         }
@@ -56,7 +60,17 @@
   {
     "type": "string_literal",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "value",
@@ -133,6 +147,10 @@
   },
   {
     "type": "comment",
+    "named": true
+  },
+  {
+    "type": "escape_sequence",
     "named": true
   },
   {
