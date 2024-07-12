@@ -2,10 +2,10 @@ prefix=@PREFIX@
 libdir=@LIBDIR@
 includedir=@INCLUDEDIR@
 
-Name: tree-sitter-dotenv
-Description: Dotenv grammar for tree-sitter
+Name: tree-sitter-env
+Description: Env grammar for tree-sitter
 URL: @URL@
 Version: @VERSION@
 Requires: @REQUIRES@
-Libs: -L${libdir} @ADDITIONAL_LIBS@ -ltree-sitter-dotenv
+Libs: -L${libdir} @ADDITIONAL_LIBS@ -ltree-sitter-env
 Cflags: -I${includedir}

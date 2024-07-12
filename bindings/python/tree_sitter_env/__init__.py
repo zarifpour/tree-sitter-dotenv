@@ -1,4 +1,4 @@
-"Dotenv grammar for tree-sitter"
+"Env grammar for tree-sitter"
 
 from ._binding import language
 

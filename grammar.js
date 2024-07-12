@@ -1,7 +1,7 @@
 const NEWLINE = /\r?\n/;
 
 module.exports = grammar({
-  name: "dotenv",
+  name: "env",
 
   extras: ($) => [$.comment, /\s/],
 

@@ -1,4 +1,4 @@
-//! This crate provides Dotenv language support for the [tree-sitter][] parsing library.
+//! This crate provides Env language support for the [tree-sitter][] parsing library.
 //!
 //! Typically, you will use the [language][language func] function to add this language to a
 //! tree-sitter [Parser][], and then use the parser to parse some code:
@@ -7,7 +7,7 @@
 //! let code = r#"
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
-//! parser.set_language(&tree_sitter_dotenv::language()).expect("Error loading Dotenv grammar");
+//! parser.set_language(&tree_sitter_env::language()).expect("Error loading Env grammar");
 //! let tree = parser.parse(code, None).unwrap();
 //! assert!(!tree.root_node().has_error());
 //! ```
@@ -20,14 +20,14 @@
 use tree_sitter::Language;
 
 extern "C" {
-    fn tree_sitter_dotenv() -> Language;
+    fn tree_sitter_env() -> Language;
 }
 
 /// Get the tree-sitter [Language][] for this grammar.
 ///
 /// [Language]: https://docs.rs/tree-sitter/*/tree_sitter/struct.Language.html
 pub fn language() -> Language {
-    unsafe { tree_sitter_dotenv() }
+    unsafe { tree_sitter_env() }
 }
 
 /// The content of the [`node-types.json`][] file for this grammar.
@@ -49,6 +49,6 @@ mod tests {
         let mut parser = tree_sitter::Parser::new();
         parser
             .set_language(&super::language())
-            .expect("Error loading Dotenv grammar");
+            .expect("Error loading Env grammar");
     }
 }

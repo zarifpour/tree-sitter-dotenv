@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-dotenv
+module github.com/tree-sitter/tree-sitter-env
 
 go 1.22
 
