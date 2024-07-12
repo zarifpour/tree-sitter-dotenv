@@ -99,6 +99,10 @@
         {
           "type": "string_literal",
           "named": true
+        },
+        {
+          "type": "url",
+          "named": true
         }
       ]
     }
@@ -172,5 +176,9 @@
   {
     "type": "true",
     "named": false
+  },
+  {
+    "type": "url",
+    "named": true
   }
 ]

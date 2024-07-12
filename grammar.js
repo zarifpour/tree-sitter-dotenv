@@ -21,6 +21,7 @@ module.exports = grammar({
       choice(
         $.string_interpolated,
         $.string_literal,
+        $.url,
         $.bool,
         $.integer,
         $.raw_value,
@@ -39,6 +40,17 @@ module.exports = grammar({
       seq("'", repeat(choice(/[^'\\]+/, $.escape_sequence)), "'"),
 
     escape_sequence: ($) => token(seq("\\", /[nrtfb"'\$\\]/)),
+
+    url: ($) =>
+      token(
+        seq(
+          /https?:\/\//,
+          /[a-zA-Z0-9.-]+/,
+          optional(seq(":", /\d+/)),
+          optional(seq("/", /[^\s#]*/)),
+          optional(seq("#", /[^\s]*/)),
+        ),
+      ),
 
     raw_value: ($) => token(prec(-1, /[^#=\n]+/)),
   },
