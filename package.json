@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-dotenv",
   "version": "1.0.0",
-  "description": "A Tree-sitter grammar for .env files, providing enhanced syntax highlighting and code navigation for environment variable configurations.",
+  "description": "🌳 A Tree-sitter grammar for dotenv files.",
   "main": "index.js",
   "types": "bindings/node",
   "scripts": {
