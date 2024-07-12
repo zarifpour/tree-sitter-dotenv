@@ -13,9 +13,17 @@ module.exports = grammar({
     variable: ($) =>
       seq(field("name", $.identifier), "=", optional(field("value", $.value))),
 
-    interpolated_variable: ($) => seq("$", $.identifier),
+    interpolated_variable: ($) =>
+      choice(
+        seq("$", $.identifier),
+        seq("${", $.identifier, "}"),
+        seq("${", $.identifier, ":-", $.identifier, "}"),
+        seq("$(", $.shell_command, ")"),
+      ),
 
-    identifier: ($) => /[A-Z][0-9a-zA-Z_]*/,
+    shell_command: ($) => /[^$()]+/,
+
+    identifier: ($) => /[A-Z_][0-9a-zA-Z_]*/,
 
     value: ($) =>
       choice(
