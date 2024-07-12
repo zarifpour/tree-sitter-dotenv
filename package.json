@@ -1,0 +1,58 @@
+{
+  "name": "tree-sitter-dotenv",
+  "version": "1.0.0",
+  "description": "A Tree-sitter grammar for .env files, providing enhanced syntax highlighting and code navigation for environment variable configurations.",
+  "main": "index.js",
+  "types": "bindings/node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zarifpour/tree-sitter-dotenv.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "dotenv"
+  ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "author": "Daniel Zarifpour <z@rifpour.xyz>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zarifpour/tree-sitter-dotenv/issues"
+  },
+  "homepage": "https://github.com/zarifpour/tree-sitter-dotenv#readme",
+  "dependencies": {
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.22.6",
+    "prebuildify": "^6.0.0"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.env",
+      "file-types": [
+        "env"
+      ]
+    }
+  ]
+}
